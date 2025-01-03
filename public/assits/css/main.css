@@ -1234,7 +1234,7 @@ Input, textarea : 14px/1.6 '', Arial, sans-serif;
   height: calc(100vh - 40px);
   
   
-  background: url("../images/Smart Bartet for Hero-section1 (1).webp");
+  background: url("../images/SMB.jpeg");
 }
 
 .rs1-slick1 .item-slick1 {
@@ -4137,7 +4137,7 @@ textarea.form-control {
 
 /* Connect Button */
 .btn-primary {
-  background: linear-gradient(45deg, #2196F3, #1976D2);
+  background: linear-gradient( #2196F3, #1976D2);
   border: none;
   border-radius: 8px;
   padding: 12px 35px;
@@ -4814,7 +4814,7 @@ section[style*="background-color: #f8f9fa"] h3::after {
          }
     
          button[type="submit"] {
-           background: none;
+           /* background: none; */
            border: none;
            cursor: pointer;
            transition: transform 0.3s ease;
@@ -4823,5 +4823,5 @@ section[style*="background-color: #f8f9fa"] h3::after {
          }
     
          button[type="submit"]:hover {
-           animation: heartBeat 0.6s ease-in-out;
+           /* animation: heartBeat 0.6s ease-in-out; */
          }

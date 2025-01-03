@@ -7,7 +7,6 @@ use Illuminate\Support\Facades\Hash;
 
 class UserProfileController extends Controller
 {
-    // عرض بيانات المستخدم
     public function showProfile()
     {
         // تحقق إذا كان المستخدم لديه الدور "user"
@@ -22,7 +21,7 @@ class UserProfileController extends Controller
     // عرض نموذج تعديل البيانات
     public function editProfile()
     {
-        // تحقق إذا كان المستخدم لديه الدور "user"
+       
         if (auth()->user()->role !== 'user') {
             // return redirect('/')->with('error', 'Access denied'); // منع الوصول
         }

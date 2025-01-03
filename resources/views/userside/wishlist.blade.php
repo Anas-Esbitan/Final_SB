@@ -1,16 +1,24 @@
 @extends('userside.userside_source.userside_template')
 
 @section('content')
+    <br><br>
     <div class="container mt-5">
-        <h1 class="text-center mb-4">Your Wishlist</h1>
+        <h1 class="text-center mb-4" style="font-size: 2.5rem; color: #333; font-weight: bold;">Your Wishlist</h1>
         <div class="row justify-content-center">
             @if ($wishlistItems->isEmpty())
-                <p class="text-center text-muted">No items in your wishlist.</p>
+                <!-- Empty State -->
+                <div class="col-lg-6 text-center">
+                    <p class="text-muted mb-4" style="font-size: 1.2rem;">The wish list is empty.</p>
+                    <a href="{{ route('/') }}" class="btn btn-primary btn-lg" style="padding: 0.75rem 2rem;">
+                        <i class="fas fa-shopping-cart me-2"></i> Go shopping
+                    </a>
+                </div>
             @else
+                <!-- Wishlist Items -->
                 <div class="col-lg-8">
                     @foreach ($wishlistItems as $item)
                         <!-- Compact Wishlist Item -->
-                        <div class="card mb-3 shadow-sm hover-shadow">
+                        <div class="card mb-4 shadow-sm hover-shadow" style="border-radius: 10px; overflow: hidden;">
                             <div class="row g-0">
                                 <!-- Image Column -->
                                 <div class="col-md-4">
@@ -34,13 +42,16 @@
                                             class="position-absolute top-0 end-0 mt-2 me-2">
                                             @csrf
                                             @method('DELETE')
-                                            <button type="submit" class="btn btn-light btn-sm rounded-circle">
+                                            <button type="submit" class="btn btn-light btn-sm rounded-circle"
+                                                style="width: 30px; height: 30px; display: flex; align-items: center; justify-content: center;">
                                                 <i class="fas fa-times"></i>
                                             </button>
                                         </form>
 
                                         <!-- Product Info -->
-                                        <h5 class="card-title mb-2">{{ $item->product->name }}</h5>
+                                        <h5 class="card-title mb-2" style="font-size: 1.5rem; color: #333;">
+                                            {{ $item->product->name }}
+                                        </h5>
                                         <p class="card-text text-muted mb-2">
                                             <small>${{ number_format($item->product->price, 2) }}</small>
                                         </p>
@@ -53,7 +64,7 @@
                                             </p>
                                             @if (strlen($item->product->description) > 100)
                                                 <button class="btn btn-link btn-sm p-0 text-muted show-more-btn"
-                                                    onclick="toggleDescription(this)">
+                                                    onclick="toggleDescription(this)" style="text-decoration: none;">
                                                     Show more
                                                 </button>
                                             @endif
@@ -62,8 +73,9 @@
                                         <!-- Action Buttons -->
                                         <div class="d-flex gap-2">
                                             <a href="{{ route('product.details', $item->product->id) }}"
-                                                class="btn btn-primary btn-sm">
-                                                View Details
+                                                class="btn btn-primary btn-sm"
+                                                style="background-color: #007bff; border: none; padding: 0.5rem 1rem;">
+                                                <i class="fas fa-eye"></i> View Details
                                             </a>
                                             {{-- <button class="btn btn-outline-primary btn-sm">
                                                 Add to Cart

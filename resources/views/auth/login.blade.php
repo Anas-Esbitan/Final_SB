@@ -1,35 +1,34 @@
-@include('userside.userside_source.userside_partials.nav')
+{{-- @include('userside.userside_source.userside_partials.nav') --}}
 @include('userside.userside_source.userside_partials.header')
 <style>
     body {
-    background: linear-gradient(135deg, #dbdbdb, #846deb);
-    color: #fff;
-    font-family: 'Poppins', sans-serif;
-    height: 100vh;
-    margin: 0;
-}
+        background: linear-gradient(135deg, #dbdbdb, #ad9fec);
+        color: #fff;
+        font-family: 'Poppins', sans-serif;
+        height: 100vh;
+        margin: 0;
+    }
 
-.card {
-    margin-top: 150px;
-    background: #fff;
-    color: #333;
-    border: none;
-}
+    .card {
+        margin-top: 150px;
+        background: #fff;
+        color: #333;
+        border: none;
+    }
 
-.card h3 {
-    font-weight: 600;
-}
+    .card h3 {
+        font-weight: 600;
+    }
 
-.card .btn-primary {
-    background-color: #6c63ff;
-    border: none;
-    transition: background-color 0.3s ease;
-}
+    .card .btn-primary {
+        background-color: #6c63ff;
+        border: none;
+        transition: background-color 0.3s ease;
+    }
 
-.card .btn-primary:hover {
-    background-color: #3f2b96;
-}
-
+    .card .btn-primary:hover {
+        background-color: #3f2b96;
+    }
 </style>
 <div class="container d-flex align-items-center justify-content-center min-vh-100">
     <div class="card shadow-lg p-4" style="width: 100%; max-width: 400px; border-radius: 10px;">
