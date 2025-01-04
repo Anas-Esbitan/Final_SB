@@ -18,7 +18,7 @@
                     <th>Last Name</th>
                     <th>Email</th>
                     <th>Phone Number</th>
-                    <th>Address</th> 
+                    <th>Address</th>
                     <th>Role</th>
                     <th>Actions</th>
                 </tr>
@@ -44,5 +44,9 @@
                 @endforeach
             </tbody>
         </table>
+
+        <div class="pagination justify-content-center">
+            {{ $users->links('pagination::bootstrap-4') }}
+        </div>
     </div>
 @endsection

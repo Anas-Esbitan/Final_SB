@@ -34,9 +34,10 @@
                     <div class="mb-3">
                         <label for="status" class="form-label">Status</label>
                         <select name="status" class="form-control">
-                            <option value="available" {{ old('status') == 'available' ? 'selected' : '' }}>New</option>
-                            <option value="sold" {{ old('status') == 'sold' ? 'selected' : '' }}>used</option>
-                            <option value="swapped" {{ old('status') == 'swapped' ? 'selected' : '' }}>Used in new condition
+                            <option value="New" {{ old('status') == 'New' ? 'selected' : '' }}>New</option>
+                            <option value="used" {{ old('status') == 'used' ? 'selected' : '' }}>Used</option>
+                            <option value="Used in new condition"
+                                {{ old('status') == 'Used in new condition' ? 'selected' : '' }}>Used in new condition
                             </option>
                         </select>
                     </div>

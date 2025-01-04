@@ -13,8 +13,8 @@ return new class extends Migration
 {
     Schema::create('images', function (Blueprint $table) {
         $table->id();
-        $table->string('path'); // لتخزين مسار الصورة
-        $table->foreignId('product_id')->constrained(); // ربط المنتج بالصورة
+        $table->string('path');
+        $table->foreignId('product_id')->constrained(); 
         $table->timestamps();
     });
 }

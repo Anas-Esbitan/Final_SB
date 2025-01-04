@@ -83,32 +83,30 @@ Route::prefix('admin')->middleware(['auth', 'isAdmin'])->group(function () {
    
  Route::get('/dashboard', [DashboardController::class, 'index'])->name('admin.dashboard');
 
-    // Categories Routes
-    Route::get('category', [CategoriesController::class, 'index']);
-    Route::get('add-category', [CategoriesController::class, 'create']);
-    Route::post('add-category', [CategoriesController::class, 'store']);    
-    Route::get('edit-category/{category_id}', [CategoriesController::class, 'edit']); 
-    Route::put('update-category/{category_id}', [CategoriesController::class, 'update']);
-    Route::delete('delete-category/{category_id}', [CategoriesController::class, 'destroy'])->name('category.destroy') ; 
+    // Categories Routes---------------------------
+    // Route::get('category', [CategoriesController::class, 'index']);
+    // Route::get('add-category', [CategoriesController::class, 'create']);
+    // Route::post('add-category', [CategoriesController::class, 'store']);    
+    // Route::get('edit-category/{category_id}', [CategoriesController::class, 'edit']); 
+    // Route::put('update-category/{category_id}', [CategoriesController::class, 'update']);
+    // Route::delete('delete-category/{category_id}', [CategoriesController::class, 'destroy'])->name('category.destroy') ; 
 
     // Users CRUD Routes
-
-    //
-    Route::get('users', [UserController::class, 'index'])->name('admin.users');
-    Route::get('add-user', [UserController::class, 'create'])->name('admin.add-user');
-    Route::post('store-user', [UserController::class, 'store'])->name('admin.store-user');
-    Route::get('edit-user/{user_id}', [UserController::class, 'edit'])->name('admin.edit-user');
-    Route::put('update-user/{user_id}', [UserController::class, 'update'])->name('admin.update-user');
-    Route::delete('delete-user/{user_id}', [UserController::class, 'destroy'])->name('admin.delete-user');
+    // Route::get('users', [UserController::class, 'index'])->name('admin.users');
+    // Route::get('add-user', [UserController::class, 'create'])->name('admin.add-user');
+    // Route::post('store-user', [UserController::class, 'store'])->name('admin.store-user');
+    // Route::get('edit-user/{user_id}', [UserController::class, 'edit'])->name('admin.edit-user');
+    // Route::put('update-user/{user_id}', [UserController::class, 'update'])->name('admin.update-user');
+    // Route::delete('delete-user/{user_id}', [UserController::class, 'destroy'])->name('admin.delete-user');
 
     // Product CRUD 
 
-    Route::get('products', [ProductController::class, 'index'])->name('admin.products');
-    Route::get('add-product', [ProductController::class, 'create'])->name('admin.create-product');
-    Route::post('store-product', [ProductController::class, 'store'])->name('admin.store-product'); 
-    Route::get('edit-product/{product_id}', [ProductController::class, 'edit'])->name('admin.edit-product'); 
-    Route::put('update-product/{product_id}', [ProductController::class, 'update'])->name('admin.update-product');
-    Route::delete('delete-product/{product_id}', [ProductController::class, 'destroy'])->name('admin.delete-product');
+    // Route::get('products', [ProductController::class, 'index'])->name('admin.products');
+    // Route::get('add-product', [ProductController::class, 'create'])->name('admin.create-product');
+    // Route::post('store-product', [ProductController::class, 'store'])->name('admin.store-product'); 
+    // Route::get('edit-product/{product_id}', [ProductController::class, 'edit'])->name('admin.edit-product'); 
+    // Route::put('update-product/{product_id}', [ProductController::class, 'update'])->name('admin.update-product');
+    // Route::delete('delete-product/{product_id}', [ProductController::class, 'destroy'])->name('admin.delete-product');
 
     // orders CRUD =========================================================
     Route::get('orders', [OrderController::class, 'index'])->name('admin.orders.index');
@@ -124,4 +122,49 @@ Route::prefix('admin')->middleware(['auth', 'isAdmin'])->group(function () {
 
     Route::resource('subscriptions', SubscriptionController::class)->middleware(['auth', 'isAdmin']);
 
+});
+// Routes for Users
+Route::middleware(['auth:web'])->group(function () {
+Route::post('/logout', [UserController::class, 'logout'])->name('logout');
+
+
+    Route::get('/user-profile', [UserProfileController::class, 'showProfile'])->name('user.profile');
+    Route::get('/wishlist', [WishlistController::class, 'index'])->name('wishlist.index');
+    // إضافة باقي الـ Routes الخاصة باليوزر هنا
+});
+
+// Routes for Admins
+Route::prefix('admin')->middleware(['auth:admin', 'isAdmin'])->group(function () {
+Route::post('/admin/logout', [AdminController::class, 'logout'])->name('admin.logout');
+
+
+    Route::get('/dashboard', [AdminController::class, 'index'])->name('admin.dashboard');
+    // proudacts
+    Route::get('products', [ProductController::class, 'index'])->name('admin.products');
+    Route::get('add-product', [ProductController::class, 'create'])->name('admin.create-product');
+    Route::post('store-product', [ProductController::class, 'store'])->name('admin.store-product'); 
+    Route::get('edit-product/{product_id}', [ProductController::class, 'edit'])->name('admin.edit-product'); 
+    Route::put('update-product/{product_id}', [ProductController::class, 'update'])->name('admin.update-product');
+    Route::delete('delete-product/{product_id}', [ProductController::class, 'destroy'])->name('admin.delete-product');
+    // إضافة باقي الـ Routes الخاصة بالأدمن هنا Users
+      Route::get('users', [UserController::class, 'index'])->name('admin.users');
+    Route::get('add-user', [UserController::class, 'create'])->name('admin.add-user');
+    Route::post('store-user', [UserController::class, 'store'])->name('admin.store-user');
+    Route::get('edit-user/{user_id}', [UserController::class, 'edit'])->name('admin.edit-user');
+    Route::put('update-user/{user_id}', [UserController::class, 'update'])->name('admin.update-user');
+    Route::delete('delete-user/{user_id}', [UserController::class, 'destroy'])->name('admin.delete-user');
+
+      Route::get('orders/create', [OrderController::class, 'create'])->name('admin.orders.create');
+      Route::get('orders', [OrderController::class, 'index'])->name('admin.orders.index');
+
+
+      //Categories
+    Route::get('category', [CategoriesController::class, 'index']);
+    Route::get('add-category', [CategoriesController::class, 'create']);
+    Route::post('add-category', [CategoriesController::class, 'store']);    
+    Route::get('edit-category/{category_id}', [CategoriesController::class, 'edit']); 
+    Route::put('update-category/{category_id}', [CategoriesController::class, 'update']);
+    Route::delete('delete-category/{category_id}', [CategoriesController::class, 'destroy'])->name('category.destroy') ; 
+     
+     
 });

@@ -16,7 +16,7 @@ return new class extends Migration
             $table->text('comment');
              $table->foreignId('user_id')->constrained()->onDelete('cascade');
             $table->foreignId('product_id')->constrained()->onDelete('cascade'); // ربط التعليق بالمنتج
-            $table->timestamps(); // تاريخ الإنشاء والتحديث
+            $table->timestamps(); 
         });
     }
 

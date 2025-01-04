@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Models\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
@@ -12,7 +13,7 @@ class UserController extends Controller
     // عرض جميع المستخدمين
     public function index()
     {
-        $users = User::all();  // جلب جميع المستخدمين من قاعدة البيانات
+        $users = User::paginate(5);   // جلب جميع المستخدمين من قاعدة البيانات
         return view('admin.users.index', compact('users'));  // إرجاع المستخدمين للعرض في الصفحة
     }
 
@@ -90,4 +91,15 @@ class UserController extends Controller
 
         return redirect()->route('admin.users')->with('success', 'User deleted successfully!');
     }
+    // في UserController.php
+public function logout(Request $request)
+{
+    Auth::logout();
+
+    $request->session()->invalidate();
+    $request->session()->regenerateToken();
+
+    return redirect('/');
+}
+
 }

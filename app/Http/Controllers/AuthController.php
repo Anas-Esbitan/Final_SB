@@ -67,19 +67,19 @@ class AuthController extends Controller
         return view('auth.user-login');
     }
 
-    public function userLogin(Request $request)
-    {
-        $request->validate([
-            'email' => 'required|string|email',
-            'password' => 'required|string',
-        ]);
+   public function login(Request $request)
+{
+    $request->validate([
+        'email' => 'required|email',
+        'password' => 'required',
+    ]);
 
-        if (Auth::guard('web')->attempt($request->only('email', 'password'))) {
-            return redirect()->route('/');
-        }
-
-        return back()->withErrors(['email' => 'Invalid credentials']);
+    if (Auth::guard('admin')->attempt(['email' => $request->email, 'password' => $request->password, 'role' => 'admin'])) {
+        return redirect()->route('admin.dashboard');
     }
+
+    return back()->withErrors(['email' => 'Invalid credentials or you are not an admin']);
+}
 
     public function showAdminLoginForm()
     {
@@ -102,14 +102,14 @@ class AuthController extends Controller
     }
 
 
-    public function logout(Request $request)
-    {
-        if (Auth::guard('admin')->check()) {
-            Auth::guard('admin')->logout();
-            return redirect()->route('admin.login');
-        } else {
-            Auth::guard('web')->logout();
-            return redirect()->route('login');
-        }
-    }
+//     public function logout(Request $request)
+// {
+//     if (Auth::guard('admin')->check()) {
+//         Auth::guard('admin')->logout();
+//         return redirect()->route('admin/login');
+//     } else {
+//         Auth::guard('web')->logout();
+//         return redirect('login')->route('login');
+//     }
+// }
 }

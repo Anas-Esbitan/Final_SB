@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('users', function (Blueprint $table) {
             $table->id();
-            $table->softDeletes(); // تأكد من إضافة softDeletes بشكل صحيح
+            $table->softDeletes();
             $table->string('First_name', 50)->nullable(); 
             $table->string('Last_name', 50)->nullable(); 
             $table->string('email', 100)->unique();

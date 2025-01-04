@@ -43,7 +43,7 @@ $products = Product::where('category_id', $id)->simplePaginate(16);
         return view('userside.product_create', compact('categories'));
     }
 
-    public function store(Request $request)
+ public function store(Request $request)
 {
     if (!auth()->check()) {
         return redirect()->route('login')->with('error', 'You need to login to add a product.');
@@ -53,7 +53,7 @@ $products = Product::where('category_id', $id)->simplePaginate(16);
         'name' => 'required|string|max:100',
         'description' => 'nullable|string',
         'price' => 'nullable|numeric',
-        'status' => 'required|in:available,sold,swapped',
+        'status' => 'required|in:New,used,Used in new condition', // Updated status validation
         'category_id' => 'required|exists:categories,id',
         'images.*' => 'nullable|image|mimes:jpeg,png,jpg|max:2048',
     ]);

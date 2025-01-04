@@ -185,6 +185,8 @@
                         <p class="stext-102 cl3 p-t-23">
                             {{ $product->description }}
                         </p>
+                        <span>Status: </span>
+                        <span class="badge badge-info">{{ $product->status }}</span>
                         <div class="p-t-33">
                             <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#contactModal">
                                 Connect
@@ -208,7 +210,7 @@
                                     <textarea name="comment" class="form-control" placeholder="Share your thoughts..." required></textarea>
                                 </div>
                                 <input type="hidden" name="product_id" value="{{ $product->id }}">
-                                <button type="submit" class="btn btn-primary">Post Comment</button>
+                                <button type="submit" class="btn btn-primary">Comment</button>
                             </form>
                         </div>
 

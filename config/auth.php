@@ -38,16 +38,21 @@ return [
     'web' => [
         'driver' => 'session',
         'provider' => 'users',
+         'cookie' => 'user_session', 
     ],
 
-    'user' => [ 
+    'admin' => [
         'driver' => 'session',
-        'provider' => 'users',
+        'provider' => 'users', // نفس الـ Provider
+         'cookie' => 'admin_session',
+         'files' => storage_path('framework/sessions/admin'), // مسار تخزين جلسات الأدمن
     ],
+],
 
-    'admin' => [ 
-        'driver' => 'session',
-        'provider' => 'admins',
+'providers' => [
+    'users' => [
+        'driver' => 'eloquent',
+        'model' => App\Models\User::class,
     ],
 ],
 

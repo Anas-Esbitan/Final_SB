@@ -4,6 +4,9 @@ use Illuminate\Support\Str;
 
 return [
 
+
+
+ 
     /*
     |--------------------------------------------------------------------------
     | Default Session Driver
@@ -195,7 +198,23 @@ return [
     | Supported: "lax", "strict", "none", null
     |
     */
-
+'cookie' => 'laravel_session', // الكوكي الافتراضي لليوزر
     'same_site' => 'lax',
-
+   'admin_session' => [
+    'driver' => 'file', // أو أي Driver آخر تفضله
+    'lifetime' => 120, // وقت انتهاء الجلسة بالأدقائق
+    'expire_on_close' => false,
+    'encrypt' => false,
+    'files' => storage_path('framework/sessions/admin'), // مسار تخزين جلسات الأدمن
+    'connection' => null,
+    'table' => 'sessions',
+    'store' => null,
+    'lottery' => [2, 100],
+    'cookie' => 'admin_session', // اسم الكوكي الخاص بجلسة الأدمن
+    'path' => '/',
+    'domain' => null,
+    'secure' => false,
+    'http_only' => true,
+    'same_site' => 'lax',
+],
 ];

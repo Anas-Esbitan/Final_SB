@@ -13,7 +13,7 @@ class ProductController extends Controller
 {
     public function index()
     {
-        $products = Product::with('category', 'user', 'images')->paginate(10);
+        $products = Product::with('category', 'user', 'images')->paginate(1);
         return view('admin.products.index', compact('products'));
     }
 
@@ -25,14 +25,14 @@ class ProductController extends Controller
 
     public function store(Request $request)
     {
-        $request->validate([
-            'name' => 'required|string|max:100',
-            'description' => 'nullable|string',
-            'price' => 'nullable|numeric',
-            'status' => 'required|in:available,sold,swapped',
-            'category_id' => 'required|exists:categories,id',
-            'images.*' => 'nullable|image|mimes:jpeg,png,jpg|max:2048', // التحقق من الصور المتعددة
-        ]);
+          $request->validate([
+        'name' => 'required|string|max:100',
+        'description' => 'nullable|string',
+        'price' => 'nullable|numeric',
+        'status' => 'required|in:New,used,Used in new condition',
+        'category_id' => 'required|exists:categories,id',
+        'images.*' => 'nullable|image|mimes:jpeg,png,jpg|max:2048',
+    ]);
 
         // إنشاء المنتج
         $product = Product::create([
@@ -67,14 +67,14 @@ class ProductController extends Controller
 
     public function update(Request $request, $id)
     {
-        $request->validate([
-            'name' => 'required|string|max:100',
-            'description' => 'nullable|string',
-            'price' => 'nullable|numeric',
-            'status' => 'required|in:available,sold,swapped',
-            'category_id' => 'required|exists:categories,id',
-            'images.*' => 'nullable|image|mimes:jpeg,png,jpg|max:2048',
-        ]);
+          $request->validate([
+        'name' => 'required|string|max:100',
+        'description' => 'nullable|string',
+        'price' => 'nullable|numeric',
+        'status' => 'required|in:New,used,Used in new condition',
+        'category_id' => 'required|exists:categories,id',
+        'images.*' => 'nullable|image|mimes:jpeg,png,jpg|max:2048',
+    ]);
 
         $product = Product::findOrFail($id);
 
