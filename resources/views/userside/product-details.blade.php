@@ -179,6 +179,9 @@
                         <h4 class="mtext-105 cl2 js-name-detail p-b-14">
                             {{ $product->name }}
                         </h4>
+                        @if ($product->user_id === auth()->id())
+                            <a href="{{ route('products.edit', $product->id) }}" class="btn btn-warning">Edit</a>
+                        @endif
                         <span class="mtext-106 cl2">
                             ${{ number_format($product->price, 2) }}
                         </span>

@@ -124,6 +124,11 @@
                                                         <i class="fa-solid fa-trash"
                                                             style="color: rgb(93, 68, 68); font-size: 1.2rem;"></i>
                                                     </button>
+                                                    @if ($product->user_id === auth()->id())
+                                                        <a href="{{ route('products.edit', $product->id) }}"
+                                                            class="btn btn-warning">Edit</a>
+                                                    @endif
+
 
                                                     <link rel="stylesheet"
                                                         href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
@@ -132,6 +137,11 @@
                                             </td>
                                         </tr>
                                     @endforeach
+                                    {{-- @if ($product->user_id === auth()->id())
+                                        <a href="{{ route('products.edit', $product->id) }}"
+                                            class="btn btn-warning">Edit</a>
+                                    @endif --}}
+
                                 </tbody>
                             </table>
                         @endif

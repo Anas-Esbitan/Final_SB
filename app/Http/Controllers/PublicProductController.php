@@ -20,7 +20,7 @@ $products = Product::where('category_id', $id)->simplePaginate(16);
     
   public function index()
 {
-    $products = Product::simplePaginate(8); 
+    $products = Product::simplePaginate(20); 
     $categories = categories::all();  // جلب جميع التصنيفات
     return view('userside.index', compact('products', 'categories'));
 }
@@ -95,48 +95,67 @@ public function destroy($id)
         return redirect()->route('user.profile')->with('success', 'Product deleted successfully.');
     }
 
+public function edit($id)
+{
+    $product = Product::findOrFail($id);
 
-    // public function edit($id)
-    // {
-    //     $product = Product::with('images')->findOrFail($id);
-    //     $categories = categories::all();
-    //     return view('/', compact('product', 'categories'));
-    // }
+    // التحقق من أن المستخدم هو مالك المنتج
+    if ($product->user_id !== auth()->id()) {
+        return redirect()->route('user.profile')->with('error', 'You do not have permission to edit this product.');
+    }
 
-    // public function update(Request $request, $id)
-    // {
-    //     $request->validate([
-    //         'name' => 'required|string|max:100',
-    //         'description' => 'nullable|string',
-    //         'price' => 'nullable|numeric',
-    //         'status' => 'required|in:available,sold,swapped',
-    //         'category_id' => 'required|exists:categories,id',
-    //         'images.*' => 'nullable|image|mimes:jpeg,png,jpg|max:2048',
-    //     ]);
+    $categories = categories::all();
+    return view('userside.product_edit', compact('product', 'categories'));
+}
 
-    //     $product = Product::findOrFail($id);
 
-    //     // تحديث بيانات المنتج
-    //     $product->update([
-    //         'category_id' => $request->category_id,
-    //         'name' => $request->name,
-    //         'description' => $request->description,
-    //         'price' => $request->price,
-    //         'status' => $request->status,
-    //     ]);
+public function update(Request $request, $id)
+{
+    $product = Product::findOrFail($id);
 
-    //     // حفظ الصور الجديدة
-    //     if ($request->hasFile('images')) {
-    //         foreach ($request->file('images') as $image) {
-    //             $imagePath = $image->store('products', 'public');
-    //             Image::create([
-    //                 'product_id' => $product->id,
-    //                 'path' => $imagePath,
-    //             ]);
-    //         }
-    //     }
+    // تحقق من أن المستخدم هو مالك المنتج
+    if ($product->user_id !== auth()->id()) {
+        return redirect()->route('user.profile')->with('error', 'You do not have permission to update this product.');
+    }
 
-    //     return redirect()->route('/')->with('success', 'Product updated successfully.');
-    // }
+    $request->validate([
+        'name' => 'required|string|max:100',
+        'description' => 'nullable|string',
+        'price' => 'nullable|numeric',
+        'status' => 'required|in:New,used,Used in new condition',
+        'category_id' => 'required|exists:categories,id',
+        'images.*' => 'nullable|image|mimes:jpeg,png,jpg|max:2048',
+    ]);
+
+    // تحديث بيانات المنتج
+    $product->update([
+        'category_id' => $request->category_id,
+        'name' => $request->name,
+        'description' => $request->description,
+        'price' => $request->price,
+        'status' => $request->status,
+    ]);
+
+    // إذا تم رفع صور جديدة
+    if ($request->hasFile('images')) {
+        // حذف الصور القديمة
+        foreach ($product->images as $image) {
+            Storage::delete('public/' . $image->path);
+            $image->delete();
+        }
+
+        // رفع الصور الجديدة
+        foreach ($request->file('images') as $image) {
+            $imagePath = $image->store('products', 'public');
+            Image::create([
+                'product_id' => $product->id,
+                'path' => $imagePath,
+            ]);
+        }
+    }
+
+    return redirect()->route('user.profile')->with('success', 'Product updated successfully.');
+}
+
     
 }

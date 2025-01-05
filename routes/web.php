@@ -62,9 +62,9 @@ Route::post('/products', [PublicProductController::class, 'store'])->name('produ
 
 // لتعديل المنتج\
     Route::delete('/products/{product}', [PublicProductController::class, 'destroy'])->name('products.destroy');
+Route::get('/products/{id}/edit', [PublicProductController::class, 'edit'])->name('products.edit');
+Route::put('/products/{id}', [PublicProductController::class, 'update'])->name('products.update');
 
-// Route::get('/products/{id}/edit', [PublicProductController::class, 'edit'])->name('product.edit');
-// Route::put('/products/{id}', [PublicProductController::class, 'update'])->name('product.update');
 //=================================================
 Route::get('/product/{id}', function ($id) {
     $product = Product::with('images')->findOrFail($id); 
