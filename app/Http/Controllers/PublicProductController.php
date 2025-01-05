@@ -21,7 +21,7 @@ $products = Product::where('category_id', $id)->simplePaginate(16);
   public function index()
 {
     $products = Product::simplePaginate(20); 
-    $categories = categories::all();  // جلب جميع التصنيفات
+    $categories = categories::all(); 
     return view('userside.index', compact('products', 'categories'));
 }
 
@@ -84,7 +84,7 @@ public function destroy($id)
         $product = Product::findOrFail($id);
 
         
-        // حذف الصور من التخزين
+     
         foreach ($product->images as $image) {
             Storage::delete('public/' . $image->path);
             $image->delete();
@@ -113,7 +113,7 @@ public function update(Request $request, $id)
 {
     $product = Product::findOrFail($id);
 
-    // تحقق من أن المستخدم هو مالك المنتج
+    
     if ($product->user_id !== auth()->id()) {
         return redirect()->route('user.profile')->with('error', 'You do not have permission to update this product.');
     }
@@ -127,7 +127,7 @@ public function update(Request $request, $id)
         'images.*' => 'nullable|image|mimes:jpeg,png,jpg|max:2048',
     ]);
 
-    // تحديث بيانات المنتج
+    
     $product->update([
         'category_id' => $request->category_id,
         'name' => $request->name,
@@ -136,15 +136,15 @@ public function update(Request $request, $id)
         'status' => $request->status,
     ]);
 
-    // إذا تم رفع صور جديدة
+  
     if ($request->hasFile('images')) {
-        // حذف الصور القديمة
+       
         foreach ($product->images as $image) {
             Storage::delete('public/' . $image->path);
             $image->delete();
         }
 
-        // رفع الصور الجديدة
+        
         foreach ($request->file('images') as $image) {
             $imagePath = $image->store('products', 'public');
             Image::create([

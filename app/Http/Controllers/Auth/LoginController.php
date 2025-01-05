@@ -18,12 +18,12 @@ class LoginController extends Controller
     // protected $redirectTo = '/home';
     public function authenticated()
     {
-        // تحقق إذا كان المستخدم هو role 'user' فقط
+       
         if (Auth::check() && Auth::user()->role == 'user') {
             return redirect('/')->with('status', 'Logged in successfully as a user');
         }
 
-        // إذا لم يكن "user"، تسجيل الخروج وإعادة التوجيه
+     
         Auth::logout();
         return redirect('/login')->withErrors(['error' => 'Unauthorized access.']);
     }
