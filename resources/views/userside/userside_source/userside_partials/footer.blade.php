@@ -6,8 +6,41 @@
                 <h4 class="stext-301 cl0 p-b-30">
                     Categories
                 </h4>
+
+                <ul>
+                    <li class="p-b-10">
+                        <a href="#" class="stext-107 cl7 hov-cl1 trans-04">
+                            Men Fashion
+                        </a>
+                    </li>
+
+                    <li class="p-b-10">
+                        <a href="#" class="stext-107 cl7 hov-cl1 trans-04">
+                            Gaming Accessories
+                        </a>
+                    </li>
+
+                    <li class="p-b-10">
+                        <a href="#" class="stext-107 cl7 hov-cl1 trans-04">
+                            Toys under $25
+                        </a>
+                    </li>
+
+                    <li class="p-b-10">
+                        <a href="#" class="stext-107 cl7 hov-cl1 trans-04">
+                            Laptop and Computer
+                        </a>
+                    </li>
+
+                    <li class="p-b-10">
+                        <a href="#" class="stext-107 cl7 hov-cl1 trans-04">
+                            Cars
+                        </a>
+                    </li>
+                </ul>
             </div>
 
+            <!-- Rest of the footer remains unchanged -->
             <div class="col-sm-6 col-lg-3 p-b-50">
                 <h4 class="stext-301 cl0 p-b-30">
                     Help
@@ -31,8 +64,6 @@
                             Shipping
                         </a>
                     </li>
-
-
                 </ul>
             </div>
 
@@ -42,8 +73,8 @@
                 </h4>
 
                 <p class="stext-107 cl7 size-201">
-                    Any questions? Let us know in store at 8th floor, 379 Hudson St, New York, NY 10018 or call us on
-                    (+1) 96 716 6879
+                    Any questions? Let us know in store at 8th floor, 379 Hudson St, New York, NY 10018 or call us on.
+                    <br> (962) 778915445
                 </p>
 
                 <div class="p-t-27">
@@ -60,21 +91,6 @@
                     </a>
                 </div>
             </div>
-
-
-        </div>
-
-        <div class="p-t-40">
-
-            <p class="stext-107 cl6 txt-center">
-
-                Copyright &copy;
-                <script>
-                    document.write(new Date().getFullYear());
-                </script> All rights reserved | Made with <i class="fa fa-heart-o" aria-hidden="true">
-                </i>
-                by <a href="https://www.linkedin.com/in/anas-esbitan-467774204/" target="_blank"> Anas Esbitan </a>
-            </p>
         </div>
     </div>
 </footer>
