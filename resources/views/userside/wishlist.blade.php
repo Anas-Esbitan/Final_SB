@@ -53,7 +53,7 @@
                                             {{ $item->product->name }}
                                         </h5>
                                         <p class="card-text text-muted mb-2">
-                                            <small>${{ number_format($item->product->price, 2) }}</small>
+                                            <small>{{ number_format($item->product->price, 2) }} JOD</small>
                                         </p>
 
                                         <!-- Description with show more/less -->

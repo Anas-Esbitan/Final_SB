@@ -12,7 +12,7 @@
 
                             <div class="layer-slick1 animated visible-false" data-appear="fadeInDown" data-delay="0">
                                 <span class="ltext-101 cl2 respon2" style="color: #ddd">
-                                    Sell ​​anything for nothing
+                                    Sell ​Anything
                                 </span>
                             </div>
 
@@ -156,7 +156,7 @@
 
                                     <div class="flex items-center">
                                         <span class="text-lg font-medium text-gray-800 mr-2">
-                                            {{ number_format($product->price, 2) }} JoD
+                                            {{ number_format($product->price, 2) }} JOD
                                         </span>
                                         <form method="POST" action="{{ route('wishlist.store') }}"
                                             class="inline-block wishlist-form" data-product-id="{{ $product->id }}">

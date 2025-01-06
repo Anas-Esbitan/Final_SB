@@ -183,7 +183,7 @@
                             <a href="{{ route('products.edit', $product->id) }}" class="btn btn-warning">Edit</a>
                         @endif
                         <span class="mtext-106 cl2">
-                            ${{ number_format($product->price, 2) }}
+                            {{ number_format($product->price, 2) }} JOD
                         </span>
                         <p class="stext-102 cl3 p-t-23">
                             {{ $product->description }}
