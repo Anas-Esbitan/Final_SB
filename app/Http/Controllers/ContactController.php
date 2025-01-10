@@ -10,14 +10,14 @@ class ContactController extends Controller
 {
    public function store(Request $request)
     {
-        // التحقق من صحة المدخلات
+        // Validate input
         $request->validate([
             'name' => 'required|string|max:255',
             'email' => 'required|email',
             'message' => 'required|string',
         ]);
 
-        // تخزين الرسالة في قاعدة البيانات
+        // Save IN DB
         ContactMessage::create([
             'name' => $request->name,
             'email' => $request->email,
