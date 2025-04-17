@@ -196,7 +196,79 @@
         </div>
     </section>
 
+<!--  -->
+<!-- Chatbot Section -->
+<section class="chatbot-section" style="position: fixed; bottom: 20px; right: 20px; z-index: 9999;">
+    <div class="chatbot-wrapper" style="background: #fff; border-radius: 10px; box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); width: 300px; height: 400px; display: none;">
+        <div class="chatbot-header" style="background:rgb(50, 164, 184); color: white; padding: 10px; text-align: center; border-top-left-radius: 10px; border-top-right-radius: 10px;">
+            <h4>Tell Me pls</h4>
+        </div>
+        <div class="chatbot-body" style="padding: 10px; height: 80%; overflow-y: auto;">
+            <!-- Chat content will be inserted here -->
+        </div>
+        <div class="chatbot-footer" style="padding: 10px; border-top: 1px solid #ddd;">
+            <input type="text" id="chatbot-input" style="width: 100%; padding: 8px;" placeholder="Type your message...">
+        </div>
+    </div>
+    <button id="chatbot-toggle" style="position: absolute; bottom: 10px; right: 10px; background:rgb(86, 192, 198); color: white; border-radius: 50%; width: 50px; height: 50px; border: none; font-size: 24px;">💬</button>
+</section>
 
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const chatbotToggle = document.getElementById('chatbot-toggle');
+        const chatbotWrapper = document.querySelector('.chatbot-wrapper');
+
+        chatbotToggle.addEventListener('click', function() {
+            chatbotWrapper.style.display = chatbotWrapper.style.display === 'none' || chatbotWrapper.style.display === '' ? 'block' : 'none';
+        });
+    });
+</script>
+
+<script>
+    async function getChatGPTResponse(message) {
+        const apiKey = 'YOUR_API_KEY'; 
+        const endpoint = 'https://api.openai.com/v1/chat/completions';
+
+        const response = await fetch(endpoint, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${apiKey}`,
+            },
+            body: JSON.stringify({
+                model: 'gpt-4',
+                messages: [
+                    { role: 'system', content: 'You are a helpful assistant.' },
+                    { role: 'user', content: message }
+                ],
+            }),
+        });
+
+        const data = await response.json();
+        return data.choices[0].message.content;
+    }
+
+    document.getElementById('chatbot-input').addEventListener('keydown', function(event) {
+        if (event.key === 'Enter') {
+            const userMessage = event.target.value;
+            const chatbotBody = document.querySelector('.chatbot-body');
+            const userMessageElement = document.createElement('div');
+            userMessageElement.textContent = `You: ${userMessage}`;
+            chatbotBody.appendChild(userMessageElement);
+
+            event.target.value = '';
+
+            getChatGPTResponse(userMessage).then(response => {
+                const botMessageElement = document.createElement('div');
+                botMessageElement.textContent = `Bot: ${response}`;
+                chatbotBody.appendChild(botMessageElement);
+                chatbotBody.scrollTop = chatbotBody.scrollHeight; // Scroll to bottom
+            });
+        }
+    });
+</script>
+
+<!--  -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <script>
         document.addEventListener('DOMContentLoaded', function() {

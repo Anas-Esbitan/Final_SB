@@ -87,7 +87,7 @@
             <!-- User Products Section -->
 
             <div class="col-md-6">
-                <div class="card shadow-lg p-4">
+                <div class="card shadow-lg p-8">
                     <div class="card-header text-center">
                         <h3>User Products</h3>
                     </div>

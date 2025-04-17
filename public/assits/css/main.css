@@ -1,7 +1,7 @@
 /*------------------------------------------------------------------
-Project:  
-Version:  
-Last change:  
+Project:
+Version:
+Last change:
 Assigned to:  Le Xuan Bach
 Primary use:  Company
 -------------------------------------------------------------------*/
@@ -19,10 +19,10 @@ Primary use:  Company
 /*------------------------------------------------------------------
 [COLOR CODES]
 
-# Text Color      :  
-# Primary Color 01:  
-# Primary Color 02:   
-# Primary Color 03:  
+# Text Color      :
+# Primary Color 01:
+# Primary Color 02:
+# Primary Color 03:
 
 ------------------------------------------------------------------*/
 /*------------------------------------------------------------------
@@ -1232,9 +1232,9 @@ Input, textarea : 14px/1.6 '', Arial, sans-serif;
 
 .item-slick1 {
   height: calc(100vh - 40px);
-  
-  
-  background: url("../images/SMB.jpeg");
+
+
+  background: url("../images/SMB.png");
 }
 
 .rs1-slick1 .item-slick1 {
@@ -2511,7 +2511,7 @@ input.num-product::-webkit-inner-spin-button {
 
 
 /*==================================================================
-    SIZE SIZE SIZE SIZE SIZE SIZE SIZE SIZE SIZE SIZE SIZE SIZE SIZE 
+    SIZE SIZE SIZE SIZE SIZE SIZE SIZE SIZE SIZE SIZE SIZE SIZE SIZE
 ==================================================================*/
 
 
@@ -2734,7 +2734,7 @@ input.num-product::-webkit-inner-spin-button {
 
 
 /*==================================================================
-   BACKGROUND BACKGROUND BACKGROUND BACKGROUND BACKGROUND BACKGROUND 
+   BACKGROUND BACKGROUND BACKGROUND BACKGROUND BACKGROUND BACKGROUND
 ==================================================================*/
 .bg-none {
   background-color: transparent;
@@ -2900,7 +2900,7 @@ input.num-product::-webkit-inner-spin-button {
 
 
 /*==================================================================
- HOW HOW HOW HOW HOW HOW HOW HOW HOW HOW HOW HOW HOW HOW HOW HOW HOW 
+ HOW HOW HOW HOW HOW HOW HOW HOW HOW HOW HOW HOW HOW HOW HOW HOW HOW
 ==================================================================*/
 .plh0::-webkit-input-placeholder {
   color: #999999;
@@ -4608,14 +4608,14 @@ section[style*="background-color: #f8f9fa"] h3::after {
            margin: -15px;
            padding: 20px 0;
          }
-    
+
          .col-5-products {
            flex: 0 0 20%;
            max-width: 20%;
            padding: 15px;
            transition: transform 0.3s ease;
          }
-    
+
          /* Product Card Styling */
          .block2 {
            background: white;
@@ -4625,12 +4625,12 @@ section[style*="background-color: #f8f9fa"] h3::after {
            position: relative;
            overflow: hidden;
          }
-    
+
          .block2:hover {
            transform: translateY(-6px);
            box-shadow: 0 12px 20px rgba(0, 0, 0, 0.1);
          }
-    
+
          /* Image and Carousel Styling */
          .block2-pic {
            position: relative;
@@ -4638,7 +4638,7 @@ section[style*="background-color: #f8f9fa"] h3::after {
            /* 1:1 Aspect Ratio */
            overflow: hidden;
          }
-    
+
          .carousel {
            position: absolute;
            top: 0;
@@ -4646,15 +4646,15 @@ section[style*="background-color: #f8f9fa"] h3::after {
            width: 100%;
            height: 100%;
          }
-    
+
          .carousel-inner {
            height: 100%;
          }
-    
+
          .carousel-item {
            height: 100%;
          }
-    
+
          .carousel-item img {
            position: absolute;
            top: 0;
@@ -4664,11 +4664,11 @@ section[style*="background-color: #f8f9fa"] h3::after {
            object-fit: cover;
            transition: transform 0.3s ease;
          }
-    
+
          .block2:hover .carousel-item img {
            transform: scale(1.05);
          }
-    
+
          /* Carousel Controls */
          .carousel-control-prev,
          .carousel-control-next {
@@ -4681,20 +4681,20 @@ section[style*="background-color: #f8f9fa"] h3::after {
            opacity: 0;
            transition: all 0.3s ease;
          }
-    
+
          .carousel-control-prev {
            left: 10px;
          }
-    
+
          .carousel-control-next {
            right: 10px;
          }
-    
+
          .block2:hover .carousel-control-prev,
          .block2:hover .carousel-control-next {
            opacity: 1;
          }
-    
+
          .carousel-control-prev-icon,
          .carousel-control-next-icon {
            width: 20px;
@@ -4702,7 +4702,7 @@ section[style*="background-color: #f8f9fa"] h3::after {
            background-size: 100%;
            filter: invert(1) grayscale(100);
          }
-    
+
          /* View Details Button */
          .block2-btn {
            position: absolute;
@@ -4718,17 +4718,17 @@ section[style*="background-color: #f8f9fa"] h3::after {
            transition: all 0.3s ease;
            opacity: 0;
          }
-    
+
          .block2:hover .block2-btn {
            bottom: 20px;
            opacity: 1;
          }
-    
+
          /* Product Text Content */
          .block2-txt {
            padding: 20px;
          }
-    
+
          .js-name-b2 {
            font-size: 1.1rem;
            font-weight: 600;
@@ -4740,7 +4740,7 @@ section[style*="background-color: #f8f9fa"] h3::after {
            overflow: hidden;
            text-decoration: none;
          }
-    
+
          /* Price and Wishlist Section */
          .flex.items-center {
            display: flex;
@@ -4748,13 +4748,13 @@ section[style*="background-color: #f8f9fa"] h3::after {
            justify-content: space-between;
            padding: 0 20px 20px;
          }
-    
+
          .text-lg.font-medium {
            color: #2c5282;
            font-size: 1.25rem;
            font-weight: 600;
          }
-    
+
          /* Wishlist Button */
          .wishlist-btn {
            background: none;
@@ -4764,11 +4764,11 @@ section[style*="background-color: #f8f9fa"] h3::after {
            transition: transform 0.3s ease;
            padding: 5px;
          }
-    
+
          .wishlist-btn:hover {
            transform: scale(1.2);
          }
-    
+
          /* Responsive Design */
          @media (max-width: 1200px) {
            .col-5-products {
@@ -4776,43 +4776,43 @@ section[style*="background-color: #f8f9fa"] h3::after {
              max-width: 25%;
            }
          }
-    
+
          @media (max-width: 992px) {
            .col-5-products {
              flex: 0 0 33.333%;
              max-width: 33.333%;
            }
          }
-    
+
          @media (max-width: 768px) {
            .col-5-products {
              flex: 0 0 50%;
              max-width: 50%;
            }
          }
-    
+
          @media (max-width: 576px) {
            .col-5-products {
              flex: 0 0 100%;
              max-width: 100%;
            }
          }
-    
+
          /* Animation for Wishlist Button */
          @keyframes heartBeat {
            0% {
              transform: scale(1);
            }
-    
+
            50% {
              transform: scale(1.2);
            }
-    
+
            100% {
              transform: scale(1);
            }
          }
-    
+
          button[type="submit"] {
            /* background: none; */
            border: none;
@@ -4821,7 +4821,7 @@ section[style*="background-color: #f8f9fa"] h3::after {
            font-size: 1.5rem;
            padding: 5px;
          }
-    
+
          button[type="submit"]:hover {
            /* animation: heartBeat 0.6s ease-in-out; */
          }
