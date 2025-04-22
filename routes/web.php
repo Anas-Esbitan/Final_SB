@@ -61,7 +61,7 @@ Route::get('/products/create', [PublicProductController::class, 'create'])->name
 Route::post('/products', [PublicProductController::class, 'store'])->name('product.store');
 
 // لتعديل المنتج\
-    Route::delete('/products/{product}', [PublicProductController::class, 'destroy'])->name('products.destroy');
+Route::delete('/products/{product}', [PublicProductController::class, 'destroy'])->name('products.destroy');
 Route::get('/products/{id}/edit', [PublicProductController::class, 'edit'])->name('products.edit');
 Route::put('/products/{id}', [PublicProductController::class, 'update'])->name('products.update');
 
