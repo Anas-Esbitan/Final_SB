@@ -12,16 +12,16 @@ class CommentController extends Controller
     public function store(Request $request)
     {
           if (!Auth::check()) {
-        // إذا لم يكن مسجلاً، ارجاع رسالة تطلب منه تسجيل الدخول
+        // Auth Login
         return redirect()->route('login')->with('error', 'You need to be logged in to add a comment.');
     }
-        // تحقق من صحة البيانات
+        // validate input
         $request->validate([
             'comment' => 'required|string|max:255',
             'product_id' => 'required|exists:products,id',
         ]);
 
-        // إنشاء التعليق الجديد
+    
         Comment::create([
             'comment' => $request->comment,
             'user_id' => Auth::id(),

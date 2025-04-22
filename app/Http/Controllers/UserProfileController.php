@@ -58,7 +58,7 @@ class UserProfileController extends Controller
 
        
         if ($request->filled('password')) {
-            $user->password = Hash::make($request->password);  // تشفير كلمة المرور
+            $user->password = Hash::make($request->password);  // تشفير كلمة السر
         }
 
         $user->save();  
